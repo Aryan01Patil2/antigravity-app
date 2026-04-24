@@ -21,11 +21,14 @@ import { useAnalysis } from './hooks/useAnalysis';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useDebounce } from './hooks/useDebounce';
 
+// ── Environment Configuration ──────────────────────────
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 // ── Nav sections
 const NAV_SECTIONS = ['analysis', 'history', 'room', 'dashboard'];
 
 const ANALYSIS_SUBMENU = [
-  { id: 'paste',  label: 'Paste Code',    icon: '⌨', desc: 'Type or paste code into the editor' },
+  { id: 'paste',  label: 'Paste Code',   icon: '⌨', desc: 'Type or paste code into the editor' },
   { id: 'file',   label: 'Upload File',   icon: '📄', desc: 'Upload a source file from disk' },
   { id: 'github', label: 'GitHub Repo',   icon: '⬡', desc: 'Analyze a public GitHub repository' },
   { id: 'batch',  label: 'ZIP Batch',     icon: '📦', desc: 'Upload a ZIP to analyze all files' },
@@ -38,6 +41,7 @@ export default function App() {
   const [language, setLanguage] = useState('auto');
   const [enableAI, setEnableAI] = useState(true);
   const [sessionTag, setSessionTag] = useState('');
+  const [batchResult, setBatchResult] = useState(null); // Added state to support the batch fetch
 
   // Active tab for main content area
   const [activeTab, setActiveTab] = useState('paste'); // paste | github | batch
@@ -109,7 +113,7 @@ export default function App() {
         <div className="nav-container">
 
           {/* Logo */}
-          <a href="#" className="nav-logo" onClick={e => { e.preventDefault(); reset(); setActiveTab('paste'); }}>
+          <a href="#" className="nav-logo" onClick={e => { e.preventDefault(); reset(); setActiveTab('paste'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
             <span className="logo-mark">⚡</span>
             <span className="logo-text">FixMyCode</span>
           </a>
@@ -252,7 +256,7 @@ export default function App() {
                 <div style={{ display: 'flex', gap: 8 }}>
                   {result && <ExportMenu code={currentCode} result={result} language={language} />}
                   {state === 'done' && (
-                    <button className="btn btn-ghost" onClick={reset} id="reset-btn">✕ New</button>
+                    <button className="btn btn-ghost" onClick={() => { reset(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} id="reset-btn">✕ New</button>
                   )}
                 </div>
               </div>
@@ -306,9 +310,9 @@ export default function App() {
                   const formData = new FormData();
                   formData.append('file', file);
                   try {
-                    const resp = await fetch('http://localhost:8000/api/analyze/batch', { method: 'POST', body: formData });
+                    // Replaced localhost with API_BASE_URL
+                    const resp = await fetch(`${API_BASE_URL}/api/analyze/batch`, { method: 'POST', body: formData });
                     const data = await resp.json();
-                    // Show batch result inline
                     setBatchResult(data);
                   } catch (err) { console.error(err); }
                 }}
