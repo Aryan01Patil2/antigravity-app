@@ -1,0 +1,77 @@
+.diff-viewer { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+
+.diff-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.diff-title-group { display: flex; align-items: center; gap: 12px; }
+
+.diff-title { font-size: 18px; font-weight: 600; }
+
+.diff-fn-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 3px 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  color: var(--accent-blue);
+}
+
+.diff-actions { display: flex; align-items: center; gap: 10px; }
+
+.improvement-badge {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-green);
+  padding: 4px 12px;
+  background: rgba(52,199,89,0.12);
+  border-radius: 20px;
+  border: 1px solid rgba(52,199,89,0.25);
+}
+
+.diff-editors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .diff-editors { grid-template-columns: 1fr; }
+}
+
+.diff-pane { display: flex; flex-direction: column; gap: 8px; }
+
+.diff-pane-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.diff-before-label { color: rgba(255,100,100,0.8); }
+.diff-after-label  { color: rgba(52,199,89,0.8); }
+
+.diff-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.diff-dot-red   { background: var(--accent-red); }
+.diff-dot-green { background: var(--accent-green); }
+
+.diff-editor-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.diff-after-wrap { border-color: rgba(52,199,89,0.15); }
+
+.diff-copy-btn { padding: 8px 16px; font-size: 13px; }

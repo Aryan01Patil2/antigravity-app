@@ -1,0 +1,16 @@
+# Python Virtual Environments and Cache
+.venv/
+**/__pycache__/
+*.pyc
+
+# Environment Variables and Secrets (CRITICAL)
+**/.env
+
+# Node.js dependencies
+**/node_modules/
+
+# Frontend Build folders
+**/dist/
+
+# Local IDE/Tool caches
+.sixth/

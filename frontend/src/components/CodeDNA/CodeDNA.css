@@ -1,0 +1,51 @@
+.dna-card {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.dna-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.dna-icon { font-size: 28px; }
+
+.dna-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2px;
+}
+
+.dna-subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+
+.dna-visual {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0d0d1a;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.dna-image {
+  width: 220px;
+  height: 220px;
+  display: block;
+  border-radius: 12px;
+  animation: fadeIn 0.6s ease;
+}
+
+.dna-download {
+  font-size: 12px;
+  padding: 8px 16px;
+  width: 100%;
+  justify-content: center;
+}

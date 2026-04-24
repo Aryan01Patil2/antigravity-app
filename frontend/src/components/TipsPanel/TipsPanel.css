@@ -1,0 +1,155 @@
+.tips-section { display: flex; flex-direction: column; gap: 16px; }
+
+.tips-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tips-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.tips-summary { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.tips-list { display: flex; flex-direction: column; gap: 8px; }
+
+/* ── Tip Card ───────────────────────────────────── */
+.tip-card {
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 200ms, box-shadow 200ms;
+}
+
+.tip-critical   { border-color: rgba(255,59,48,0.25); }
+.tip-warning    { border-color: rgba(255,159,10,0.25); }
+.tip-suggestion { border-color: rgba(0,113,227,0.2); }
+
+.tip-open.tip-critical   { box-shadow: 0 4px 24px rgba(255,59,48,0.1); }
+.tip-open.tip-warning    { box-shadow: 0 4px 24px rgba(255,159,10,0.08); }
+.tip-open.tip-suggestion { box-shadow: 0 4px 24px rgba(0,113,227,0.08); }
+
+.tip-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms;
+}
+.tip-header:hover { background: rgba(255,255,255,0.03); }
+
+.tip-severity-icon { font-size: 14px; flex-shrink: 0; }
+
+.tip-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  min-width: 0;
+}
+
+.tip-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.effort-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.effort-low    { background: rgba(52,199,89,0.12); color: #34c759; }
+.effort-medium { background: rgba(255,159,10,0.12); color: #ff9f0a; }
+.effort-high   { background: rgba(255,59,48,0.12); color: #ff3b30; }
+
+.tip-chevron {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  transition: transform 200ms;
+}
+
+.tip-body {
+  padding: 0 16px 16px 40px;
+}
+
+.tip-detail {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.tip-category {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  font-family: var(--font-mono);
+}
+
+/* Severity dot (replaces emoji) */
+.tip-severity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tip-dot-critical   { background: #ff3b30; box-shadow: 0 0 6px rgba(255,59,48,0.5); }
+.tip-dot-warning    { background: #ff9f0a; box-shadow: 0 0 6px rgba(255,159,10,0.5); }
+.tip-dot-suggestion { background: #34c759; box-shadow: 0 0 6px rgba(52,199,89,0.5); }
+
+/* Tip footer row */
+.tip-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tip-effort-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  font-family: var(--font-mono);
+}
+
+.tip-example-toggle {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: var(--accent-blue);
+  cursor: pointer;
+  font-family: var(--font-body);
+  padding: 0;
+  transition: opacity 150ms;
+}
+.tip-example-toggle:hover { opacity: 0.7; }
+
+/* Code example block */
+.tip-example {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  overflow-x: auto;
+  white-space: pre;
+}
+

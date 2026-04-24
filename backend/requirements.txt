@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+groq
+pymongo
+motor
+radon
+python-multipart
+aiofiles
+python-dotenv
+openai

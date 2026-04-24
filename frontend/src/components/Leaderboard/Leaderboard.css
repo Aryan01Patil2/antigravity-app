@@ -1,0 +1,101 @@
+.leaderboard-section { display: flex; flex-direction: column; gap: 16px; }
+.lb-title { font-size: 22px; font-weight: 600; }
+
+.lb-join {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+.lb-join-desc { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 360px; }
+.lb-join-row { display: flex; gap: 10px; width: 100%; max-width: 360px; }
+
+.lb-room-input, .lb-name-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  font-family: var(--font-mono);
+  padding: 10px 14px;
+  border-radius: 10px;
+  outline: none;
+  letter-spacing: 0.1em;
+  transition: border-color 200ms;
+}
+.lb-room-input:focus, .lb-name-input:focus { border-color: rgba(0,113,227,0.5); }
+.lb-name-input { font-family: var(--font-body); letter-spacing: 0; font-size: 14px; }
+
+.lb-content { display: flex; flex-direction: column; gap: 12px; }
+
+.lb-room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.lb-room-badge {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.08em;
+}
+
+.lb-submit-card {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lb-submit-label { font-size: 14px; color: rgba(255,255,255,0.7); }
+.lb-submit-row { display: flex; gap: 10px; }
+
+.lb-success {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--accent-green);
+  background: rgba(52,199,89,0.08);
+  border-color: rgba(52,199,89,0.2);
+}
+
+.lb-empty {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.35);
+}
+
+.lb-entries { display: flex; flex-direction: column; gap: 8px; }
+
+.lb-entry {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  transition: transform 200ms;
+}
+.lb-entry:hover { transform: translateX(4px); }
+.lb-entry-first { border-color: rgba(255,215,0,0.25); background: rgba(255,215,0,0.04); }
+
+.lb-rank { font-size: 20px; flex-shrink: 0; width: 28px; }
+
+.lb-entry-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+
+.lb-name { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); }
+
+.lb-lang {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.3);
+}
+
+.lb-entry-score {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
