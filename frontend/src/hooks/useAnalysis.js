@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8000/api';
+// ── Environment Configuration ──────────────────────────
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000') + '/api';
 
 export function useAnalysis() {
   const [state, setState] = useState('idle'); // idle | analyzing | done | error
@@ -13,6 +14,7 @@ export function useAnalysis() {
     if (!code?.trim()) return;
     setState('analyzing');
     setError(null);
+    setResult(null); // Clear previous results
     setProgress(0);
 
     // Simulate progress while waiting
@@ -27,6 +29,7 @@ export function useAnalysis() {
         enable_ai: enableAi,
         session_tag: sessionTag,
       });
+      
       clearInterval(progressInterval);
       setProgress(100);
       setResult(data);
