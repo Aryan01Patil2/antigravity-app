@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-const WS_URL = 'ws://localhost:8000/ws/analyze-stream';
+// ── Secure Protocol Detection ──────────────────────────
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+// Convert http/https to ws/wss automatically
+const WS_URL = API_BASE.replace(/^http/, 'ws') + '/ws/analyze-stream';
 
 export function useWebSocket() {
   const ws = useRef(null);
@@ -9,7 +12,8 @@ export function useWebSocket() {
   const reconnectTimer = useRef(null);
 
   const connect = useCallback(() => {
-    if (ws.current?.readyState === WebSocket.OPEN) return;
+    // Only attempt connection if not already connecting/open
+    if (ws.current?.readyState === WebSocket.OPEN || ws.current?.readyState === WebSocket.CONNECTING) return;
 
     try {
       ws.current = new WebSocket(WS_URL);
@@ -30,11 +34,13 @@ export function useWebSocket() {
 
       ws.current.onclose = () => {
         setConnected(false);
-        // Reconnect after 3s
+        // Attempt reconnect after 3s if component is still mounted
+        clearTimeout(reconnectTimer.current);
         reconnectTimer.current = setTimeout(connect, 3000);
       };
 
-      ws.current.onerror = () => {
+      ws.current.onerror = (err) => {
+        console.error('WebSocket Error:', err);
         ws.current?.close();
       };
     } catch (e) {
